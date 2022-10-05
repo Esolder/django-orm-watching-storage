@@ -1,27 +1,19 @@
 import os
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('ENGINE'),
-        'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-    }
-}
+DATABASES = {'default': json.loads(os.getenv('DB_SETTINGS'))}
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
-DEBUG = os.getenv('DEBUG')
+DEBUG = False
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost']
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
