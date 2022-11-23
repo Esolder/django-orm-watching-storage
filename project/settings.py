@@ -1,9 +1,17 @@
 import os
 from dotenv import load_dotenv
-import json
-
 load_dotenv()
-DATABASES = {'default': json.loads(os.getenv('DB_SETTINGS'))}
+
+DATABASES = {
+    'default': {
+        'ENGINE': os.getenv("DJ_DB_ENGINE"),
+        'HOST': os.getenv("DJ_DB_HOST"),
+        'PORT': os.getenv("DJ_DB_PORT"),
+        'NAME': os.getenv("DJ_DB_NAME"),
+        'USER': os.getenv("DJ_DB_USER"),
+        'PASSWORD': os.getenv("DJ_DB_PASSWORD")
+    }
+}
 
 INSTALLED_APPS = ['datacenter']
 
