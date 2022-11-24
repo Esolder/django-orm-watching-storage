@@ -17,7 +17,7 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-DEBUG = False
+DEBUG = os.getenv('DEBUG', False)
 
 ROOT_URLCONF = 'project.urls'
 
